@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'crea-train-route'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "crea.train.route.CREATrainRoute"
+    }
+
+    from {
+        // filters only existing and non-empty dirs
+        sourceSets.main.runtimeClasspath
+                .filter { (it.isDirectory() && it.listFiles().length > 0) || it.isFile() }
+                .collect { it.isDirectory() ? it : zipTree(it) }
+
+    }
+    destinationDir = file("$rootDir/output/")
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
