@@ -1,1 +1,1 @@
-# Shortest Tran Route using Dijkstra Algorithm.
+# Shortest Train Route using Dijkstra Algorithm.
